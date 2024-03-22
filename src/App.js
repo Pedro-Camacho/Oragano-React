@@ -5,6 +5,44 @@ import Happy from './componentes/Happy';
 import Time from './componentes/Time'
 
 function App() {
+  const times=[
+    {
+      nome: 'Programação',
+      corPrimaria: '#57C278',
+      corSecundaria: '#D9F7E9',
+    },
+    {
+      nome: 'Front-End',
+      corPrimaria: '#82CFFA',
+      corSecundaria: '#E8F8FF',
+    },
+    {
+      nome: 'Data-Science',
+      corPrimaria: '#A6D157',
+      corSecundaria: '#F0F8E2',
+    },
+    {
+      nome: 'Devops',
+      corPrimaria: '#E06B69',
+      corSecundaria: '#FDE7E8',
+    },
+    {
+      nome: 'ux e design',
+      corPrimaria: '#DB6EBF',
+      corSecundaria: '#FAE9F5',
+    },
+    {
+      nome: 'mobile',
+      corPrimaria: '#FFBA05',
+      corSecundaria: '#FFF5D9',
+    },
+    {
+      nome: 'inovação e gestão',
+      corPrimaria: '#FF8A29',
+      corSecundaria: '#FFEEDF',
+    },
+  ]
+
   const [colaborador,setColaborador]=useState([]);
   const aoColaboradorCadastro=(colaborador)=>{
     console.log(colaborador)
@@ -13,7 +51,13 @@ function App() {
     <div className="App">
       <Banner/> 
       <Formulario aoColaboradorCadastro={colaborador=>aoColaboradorCadastro(colaborador)}/>                       
-      <Time nome="Programação"/>
+      {/*para cada time no nosso componente time cria um componete Time e o coloca o nome */}      
+      {times.map(time=> <Time 
+                          key={time.nome} 
+                          nome={time.nome} 
+                          corPrimaria={time.corPrimaria} 
+                          corSecundaria={time.corSecundaria}
+      />)}
       <Happy/>      
     </div>
   );
